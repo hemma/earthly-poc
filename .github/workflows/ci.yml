@@ -1,0 +1,28 @@
+# .github/workflows/ci.yml
+
+name: test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/lint
+  
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/test
+  
+  build-docker:
+    name: Build docker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/build-docker
