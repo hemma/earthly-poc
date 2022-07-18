@@ -10,10 +10,14 @@ on:
 
 jobs:
   lint:
+    name: Lint
     uses: ./.github/workflows/lint.yml
   
   test:
+    name: Test
     uses: ./.github/workflows/test.yml
   
-  build-docker:
+  build:
+    name: Build
+    needs: [Lint, Test]
     uses: ./.github/workflows/build-docker.yml
